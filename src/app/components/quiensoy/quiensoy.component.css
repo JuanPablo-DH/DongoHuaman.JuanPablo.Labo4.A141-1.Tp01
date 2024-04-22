@@ -1,0 +1,18 @@
+.container {
+  margin-top: 50px;
+}
+
+.nombre {
+  color: #333;
+  font-size: 36px;
+}
+
+.curso, .juego {
+  color: #666;
+  font-size: 24px;
+}
+
+.pendiente {
+  color: #900;
+  font-size: 48px;
+}
