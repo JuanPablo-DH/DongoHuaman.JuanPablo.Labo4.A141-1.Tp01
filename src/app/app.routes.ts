@@ -19,7 +19,13 @@ export const routes: Routes = [
     loadComponent: () => import("./components/quiensoy/quiensoy.component").then((m) => m.QuiensoyComponent)
   },
   {
-    path: "",
-    loadComponent: () => import("./components/login/login.component").then((m) => m.LoginComponent)
+    path: "", 
+    pathMatch: 'full',
+    redirectTo: 'login' 
+  },
+  {
+    path: "**",
+    pathMatch: 'full',
+    redirectTo: 'login' /* Cambiarlo por un componente Error */
   }
 ];

@@ -72,15 +72,12 @@ export class Usuario
     {
       case "login":
         return (this.email === pUsuario.email && this.clave === pUsuario.clave);
-      break;
 
       case "registrar":
         return (this.email === pUsuario.email);
-      break;
 
       default:
         return false;
-      break;
     }
   }
 
