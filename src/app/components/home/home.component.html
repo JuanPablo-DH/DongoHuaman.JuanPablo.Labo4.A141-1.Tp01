@@ -1,0 +1,76 @@
+<div class="container-fluid bg-secondary" style="height: 47px">
+  <div class="row">
+    <!-- izquierda -->
+    <div class="m-1 col d-flex justify-content-start align-items-center">
+      <a
+        id="nav-bar-button-info-usuario"
+        href="#"
+        class="btn text-white"
+        routerLink="info-usuario"
+        >{{ emailUsuario }}</a
+      >
+      <div class="nav-bar-separator"></div>
+      <button
+        id="nav-bar-button-juego-uno"
+        href="#"
+        type="button"
+        class="btn text-white bg-dark"
+        routerLink="juego-uno"
+      >
+        Juego 1
+      </button>
+      <button
+        id="nav-bar-button-juego-dos"
+        href="#"
+        type="button"
+        class="btn text-white bg-dark"
+        routerLink="juego-dos"
+      >
+        Juego 2
+      </button>
+      <button
+        id="nav-bar-button-juego-tres"
+        href="#"
+        type="button"
+        class="btn text-white bg-dark"
+        routerLink="juego-tres"
+      >
+        Juego 3
+      </button>
+      <button
+        id="nav-bar-button-juego-cuatro"
+        href="#"
+        type="button"
+        class="btn text-white bg-dark"
+        routerLink="juego-cuatro"
+      >
+        Juego 4
+      </button>
+    </div>
+
+    <!-- centro -->
+    <div class="m-1 col d-flex justify-content-center align-items-center"></div>
+
+    <!-- derecha -->
+    <div class="m-1 col d-flex justify-content-end align-items-center">
+      <a
+        id="nav-bar-button-quiensoy"
+        href="#"
+        class="btn text-white"
+        routerLink="quien-soy"
+        >¿Quien soy?</a
+      >
+      <div class="nav-bar-separator"></div>
+      <button
+        id="nav-bar-button-cerrar-sesion"
+        href="#"
+        type="button"
+        class="btn text-white bg-dark"
+        (click)="cerrarSesion()"
+      >
+        Cerrar Sesion
+      </button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

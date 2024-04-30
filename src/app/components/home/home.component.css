@@ -1,0 +1,50 @@
+.separator {
+  border: none;
+  border-top: 1px solid white;
+  margin: 8px 0;
+}
+
+#nav-bar-button-info-usuario {
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+#nav-bar-button-juego-uno {
+  margin-right: 30px;
+  margin-left: 30px;
+  white-space: nowrap;
+}
+
+#nav-bar-button-juego-dos {
+  margin-right: 30px;
+  margin-left: 15px;
+  white-space: nowrap;
+}
+#nav-bar-button-juego-tres {
+  margin-right: 30px;
+  margin-left: 15px;
+  white-space: nowrap;
+}
+#nav-bar-button-juego-cuatro {
+  margin-right: 30px;
+  margin-left: 15px;
+  white-space: nowrap;
+}
+
+#nav-bar-button-quiensoy {
+  margin-left: 15px;
+  white-space: nowrap;
+}
+
+#nav-bar-button-cerrar-sesion {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.nav-bar-separator {
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 30px;
+  width: 1px;
+  background-color: #ddd;
+}
