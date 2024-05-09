@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { UsuarioService } from '../../services/usuario.service';
+import { Swalert } from '../../classes/swalert.class';
 
 @Component({
   selector: 'app-registro',
@@ -20,14 +21,7 @@ export class RegistroComponent {
   public email: string = '';
   public clave: string = '';
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private usuarioService: UsuarioService,
-    private databaseService: DatabaseService
-  ) {
-    this.databaseService.setBd('usuarios');
-  }
+  constructor(private router: Router, private usuarioService: UsuarioService) {}
 
   registrar() {
     let usuario: Usuario;
@@ -39,42 +33,21 @@ export class RegistroComponent {
         this.clave
       );
     } catch (error) {
-      this.alertRegistroError(error);
+      Swalert.alertAccesoError(error as string);
       return;
     }
 
-    this.authService
+    this.usuarioService
       .registrar(usuario)
-      .then((respuesta) => {
-        this.alertRegistroExito().then((x) => {
-          this.databaseService.insertarConId(usuario.email, {
-            nombre: usuario.nombre,
-          });
-          this.usuarioService.setUsuario(usuario);
+      .then((r) => {
+        this.usuarioService.insertar(usuario);
+        Swalert.alertAccesoExito('Registro exitoso');
+        setTimeout(() => {
           this.router.navigateByUrl('/home/info-usuario');
-        });
+        }, 250);
       })
-      .catch((error) => {
-        this.alertRegistroError('Ya existe el email ' + usuario.email);
+      .catch((e) => {
+        Swalert.alertAccesoError('Ya existe el email ' + usuario.email);
       });
-  }
-
-  async alertRegistroExito() {
-    return Swal.fire({
-      heightAuto: false,
-      title: 'Crear Cuenta',
-      text: 'Realizado exitosamente',
-      confirmButtonText: 'Confirmar',
-      confirmButtonColor: '#808080',
-    });
-  }
-  async alertRegistroError(pMensaje: any) {
-    return Swal.fire({
-      heightAuto: false,
-      title: 'Error al crear Cuenta',
-      text: pMensaje,
-      confirmButtonText: 'Confirmar',
-      confirmButtonColor: '#808080',
-    });
   }
 }

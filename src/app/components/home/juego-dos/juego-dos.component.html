@@ -1,1 +1,56 @@
-<h1>Juego 2 Works!</h1>
+<div class="juego-dos-container">
+  <!-- Cartas -->
+  <div class="cartas-container">
+    <!-- Mazo -->
+    <div class="card">
+      <h2 class="text-center">Mazo</h2>
+      <h2 class="text-center">{{ baraja.length }}</h2>
+    </div>
+
+    <!-- Carta anterior -->
+    <div class="card">
+      <h2 class="text-center">Carta Anterior</h2>
+      <h2 class="text-center">{{ cartaAnterior }}</h2>
+    </div>
+
+    <!-- Carta actual -->
+    <div class="card">
+      <h2 class="text-center">Carta Actual</h2>
+      <h2 class="text-center">{{ cartaActual }}</h2>
+    </div>
+  </div>
+
+  <!-- Botones de seleccion -->
+  <div class="buttons-container">
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!estaDetenido"
+      (click)="empezarJuego()"
+    >
+      Iniciar Juego
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="estaDetenido"
+      (click)="seleccionarMenor()"
+    >
+      Menor
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="estaDetenido"
+      (click)="seleccionarMayor()"
+    >
+      Mayor
+    </button>
+  </div>
+
+  <!-- Informacion del puntaje y tiempo -->
+  <div class="card text-center informacion-container">
+    <p>Puntaje: {{ puntaje }}</p>
+    <p *ngIf="!estaDetenido">Tiempo restante: {{ tiempoRestante }} segundos</p>
+  </div>
+</div>

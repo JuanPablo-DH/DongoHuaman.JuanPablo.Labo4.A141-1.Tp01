@@ -1,1 +1,59 @@
-<h1>Juego 1 Works!</h1>
+<div class="ahorcado-container">
+  <!-- Muñeco del ahorcado -->
+  <div class="card ahorcado-munieco">
+    <!-- Sin persona -->
+    <div class="cabeza" *ngIf="contadorErrores == 0">
+      <img src="assets/juego-uno/ahorcado-0.png" />
+    </div>
+    <!-- Cabeza -->
+    <div class="cabeza" *ngIf="contadorErrores === 1">
+      <img src="assets/juego-uno/ahorcado-1.png" />
+    </div>
+    <!-- Cuerpo -->
+    <div class="cuerpo" *ngIf="contadorErrores === 2">
+      <img src="assets/juego-uno/ahorcado-2.png" />
+    </div>
+    <!-- Brazo izquierdo -->
+    <div class="brazo-izquierdo" *ngIf="contadorErrores === 3">
+      <img src="assets/juego-uno/ahorcado-3.png" />
+    </div>
+    <!-- Brazo derecho -->
+    <div class="brazo-derecho" *ngIf="contadorErrores === 4">
+      <img src="assets/juego-uno/ahorcado-4.png" />
+    </div>
+
+    <!-- Pierna izquierda -->
+    <div class="pierna-izquierda" *ngIf="contadorErrores === 5">
+      <img src="assets/juego-uno/ahorcado-5.png" />
+    </div>
+
+    <!-- Pierna derecha -->
+    <div class="pierna-derecha" *ngIf="contadorErrores === 6">
+      <img src="assets/juego-uno/ahorcado-6.png" />
+    </div>
+  </div>
+
+  <!-- Palabra a adivinar -->
+  <div class="card ahorcado-palabra">
+    <span *ngFor="let letra of palabra">
+      <!-- {{ letra === " " ? " " : letraEstaDeshabilitada(letra) ? letra : "_" }} -->
+      {{ letraEstaDeshabilitada(letra) ? letra : "_" }}
+    </span>
+  </div>
+
+  <!-- Botones de letras -->
+  <div class="ahorcado-letras">
+    <ng-container *ngFor="let rowIndex of [0, 1, 2, 3]">
+      <div class="row">
+        <button
+          *ngFor="let letra of letras.slice(rowIndex * 6, (rowIndex + 1) * 6)"
+          class="btn col"
+          (click)="elegirLetra(letra)"
+          [disabled]="letraEstaDeshabilitada(letra) || estaDetenido"
+        >
+          {{ letra }}
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

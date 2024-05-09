@@ -19,23 +19,17 @@ export class InfoUsuarioComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private usuarioService: UsuarioService
-  ) {
-    this.databaseService.setBd('usuarios');
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.emailUsuario = this.usuarioService.getUsuario().email;
+    this.emailUsuario = this.usuarioService.getEmail();
 
-    this.databaseService.traerTodos()?.subscribe((res) => {
-      this.listaUsuarios = res;
-      //console.log('listaUsuarios', this.listaUsuarios);
+    this.usuarioService.traerTodos()?.subscribe((r) => {
+      this.listaUsuarios = r;
     });
 
-    this.databaseService
-      .traerPorId(this.usuarioService.getUsuario().email)
-      ?.subscribe((res) => {
-        this.usuarioObtenido = res;
-        //console.log(res);
-      });
+    this.usuarioService.traerPorId(this.emailUsuario)?.subscribe((r) => {
+      this.usuarioObtenido = r;
+    });
   }
 }

@@ -17,35 +17,29 @@ import {
   providedIn: 'root',
 })
 export class DatabaseService {
-  private bd: string = '';
-
   constructor(private firestore: Firestore) {}
 
-  setBd(bd: string) {
-    this.bd = bd;
-  }
-
-  insertar(dato: any) {
+  insertar(dato: any, bd: string) {
     try {
-      const colRef = collection(this.firestore, this.bd);
+      const colRef = collection(this.firestore, bd);
       addDoc(colRef, dato);
     } catch (e) {
       console.log('error StoreUsuarioService.insertar()', e);
     }
   }
 
-  insertarConId(id: string, dato: any) {
+  insertarConId(id: string, dato: any, bd: string) {
     try {
-      const docuRef = doc(this.firestore, this.bd + `/${id}`);
+      const docuRef = doc(this.firestore, bd + `/${id}`);
       setDoc(docuRef, dato);
     } catch (e) {
       console.log('error StoreUsuarioService.insertarConId()', e);
     }
   }
 
-  traerTodos() {
+  traerTodos(bd: string) {
     try {
-      const colRef = collection(this.firestore, this.bd);
+      const colRef = collection(this.firestore, bd);
       return collectionData(colRef);
     } catch (e) {
       console.log('error StoreUsuarioService.traerTodos()', e);
@@ -53,9 +47,9 @@ export class DatabaseService {
     return;
   }
 
-  traerPorId(id: string) {
+  traerPorId(id: string, bd: string) {
     try {
-      const colRef = collection(this.firestore, this.bd);
+      const colRef = collection(this.firestore, bd);
       const docRef = doc(colRef, id);
       return docData(docRef);
     } catch (e) {
@@ -64,9 +58,9 @@ export class DatabaseService {
     return;
   }
 
-  eliminar(id: string) {
+  eliminar(id: string, bd: string) {
     try {
-      const colRef = collection(this.firestore, this.bd);
+      const colRef = collection(this.firestore, bd);
       const docRef = doc(colRef, id);
       deleteDoc(docRef);
     } catch (e) {
@@ -74,9 +68,9 @@ export class DatabaseService {
     }
   }
 
-  modificar(id: string, dato: any) {
+  modificar(id: string, dato: any, bd: string) {
     try {
-      const colRef = collection(this.firestore, this.bd);
+      const colRef = collection(this.firestore, bd);
       const docRef = doc(colRef, id);
       updateDoc(docRef, dato);
     } catch (e) {

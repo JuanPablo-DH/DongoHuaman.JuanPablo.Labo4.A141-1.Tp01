@@ -1,0 +1,61 @@
+.juego-dos-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 58px);
+  background: linear-gradient(
+    6deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(101, 101, 101, 1) 90%
+  );
+}
+
+.btn {
+  white-space: nowrap; /* Evita que se agranden los botones */
+}
+
+.cartas-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 950px;
+  padding: 8px;
+  margin-top: -100px;
+}
+.cartas-container .card {
+  justify-content: center;
+  margin: 3px;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}
+
+.buttons-container {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 950px;
+}
+.buttons-container .btn {
+  width: 150px;
+  margin: 5px 5px;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}
+
+.informacion-container {
+  margin-top: 15px;
+  height: 70px;
+  width: 250px;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}

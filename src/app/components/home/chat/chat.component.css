@@ -1,0 +1,85 @@
+.chat-button {
+  position: fixed;
+  z-index: 9999;
+  bottom: 50px;
+  right: 50px;
+}
+.chat-button button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  border: solid 2px #ffffff;
+}
+.chat-container {
+  position: fixed;
+  z-index: 9999;
+  width: 350px;
+  right: 50px;
+  bottom: 50px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+.card-header button {
+  position: absolute;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: solid 2px #ffffff;
+}
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+
+.mensajes-container {
+  height: 350px;
+  overflow: scroll;
+}
+.mensajes-container::-webkit-scrollbar {
+  display: none;
+}
+
+.mensaje {
+  margin: 5px 0;
+  border-radius: 25px;
+}
+
+.mensaje-contenido {
+  display: inline-block;
+  padding: 10px;
+}
+.mensaje-enviado {
+  display: block;
+  float: right;
+  /*max-width: 200px; El .texto establece el ancho maximo y minimo 
+  min-width: 200px;*/
+  background-color: #dcf8c6;
+  text-align: right;
+}
+.mensaje-recibido {
+  display: block;
+  float: left;
+  /*max-width: 200px; El .texto establece el ancho maximo y minimo 
+  min-width: 200px;*/
+  background-color: #e4e4e4;
+  text-align: left;
+}
+
+.mensaje-informacion {
+  font-size: 12px;
+  color: #777;
+}
+.mensaje-texto {
+  min-width: 200px;
+  max-width: 200px;
+  margin-bottom: 2px;
+  word-wrap: break-word;
+}

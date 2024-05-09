@@ -1,0 +1,58 @@
+.ahorcado-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 58px);
+  background: linear-gradient(
+    6deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(101, 101, 101, 1) 90%
+  );
+}
+
+.ahorcado-errores {
+  color: #ffffff;
+}
+
+.ahorcado-munieco {
+  width: 400px;
+  height: 250px;
+  margin-top: -30px;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}
+.ahorcado-munieco img {
+  margin-bottom: -100px;
+}
+
+.ahorcado-palabra {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 25px;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}
+.ahorcado-palabra span {
+  color: #ffffff;
+  margin: 10px 10px;
+}
+
+.ahorcado-letras {
+  margin-top: 15px;
+}
+.ahorcado-letras button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+  color: #ffffff;
+}

@@ -2,6 +2,11 @@ import { Route } from '@angular/router';
 
 export default [
   {
+    path: '',
+    redirectTo: 'info-usuario',
+    pathMatch: 'full',
+  },
+  {
     path: 'quien-soy',
     loadComponent: () =>
       import('./quiensoy/quiensoy.component').then((m) => m.QuiensoyComponent),

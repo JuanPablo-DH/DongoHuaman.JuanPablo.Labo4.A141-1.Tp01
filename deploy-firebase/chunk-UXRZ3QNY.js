@@ -1,0 +1,1 @@
+import{b as s}from"./chunk-TMQEY75P.js";var i=class{static crearParaIniciarSesion(t,a){let e=new s;return e.setEmail(t),e.setClave(a),e}static crearParaRegistrar(t,a,e){let r=new s;return r.setNombre(t),r.setEmail(a),r.setClave(e),r}};export{i as a};

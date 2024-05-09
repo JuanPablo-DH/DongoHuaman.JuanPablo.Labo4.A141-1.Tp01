@@ -1,0 +1,12 @@
+.juego-tres-container {
+  height: calc(100vh - 58px);
+  background: linear-gradient(
+    6deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(101, 101, 101, 1) 90%
+  );
+}
+
+h1 {
+  color: #333;
+}

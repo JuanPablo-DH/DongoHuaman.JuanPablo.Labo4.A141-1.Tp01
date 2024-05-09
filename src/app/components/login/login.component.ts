@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
+import { Swalert } from '../../classes/swalert.class';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +19,7 @@ export class LoginComponent {
   public email: string = '';
   public clave: string = '';
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private usuarioService: UsuarioService
-  ) {}
+  constructor(private router: Router, private usuarioService: UsuarioService) {}
 
   iniciarSesion() {
     let usuario: Usuario;
@@ -33,45 +30,25 @@ export class LoginComponent {
         this.clave
       );
     } catch (error) {
-      this.alertLogeoError(error);
+      Swalert.alertAccesoError(error as string);
       return;
     }
 
-    this.authService
+    this.usuarioService
       .iniciarSesion(usuario)
-      .then((respuesta) => {
-        this.usuarioService.setUsuario(usuario);
-        this.router.navigateByUrl('/home/info-usuario');
+      .then((r) => {
+        Swalert.alertAccesoExito('Inicio de sesion exitoso');
+        setTimeout(() => {
+          this.router.navigateByUrl('/home/info-usuario');
+        }, 250);
       })
-      .catch((error) => {
-        this.alertLogeoError('No existe el usuario');
+      .catch((e) => {
+        Swalert.alertAccesoError('No existe el usuario');
       });
   }
 
-  cargarUsuario(numero: number) {
-    switch (numero) {
-      case 1:
-        this.email = 'juanpablo@gmail.com';
-        this.clave = '123abc1';
-        break;
-      case 2:
-        this.email = 'alan@hotmail.com';
-        this.clave = '123abc2';
-        break;
-      case 3:
-        this.email = 'kevin@outlook.com';
-        this.clave = '123abc3';
-        break;
-    }
-  }
-
-  async alertLogeoError(pMensaje: any) {
-    return Swal.fire({
-      heightAuto: false,
-      title: 'Error al iniciar de sesion',
-      text: pMensaje,
-      confirmButtonText: 'Confirmar',
-      confirmButtonColor: '#808080',
-    });
+  cargarUsuario(indice: number) {
+    this.email = this.usuarioService.usuariosValidos[indice - 1].email;
+    this.clave = this.usuarioService.usuariosValidos[indice - 1].clave;
   }
 }
