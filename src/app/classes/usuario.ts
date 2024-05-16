@@ -36,7 +36,7 @@ export class Usuario {
   }
 
   public setNombre(pNombre: string): void {
-    pNombre.toUpperCase();
+    pNombre.toLowerCase();
     Usuario.validarNombre(pNombre);
     this.nombre = pNombre;
   }

@@ -11,14 +11,29 @@ import { Swalert } from '../../../classes/swalert.class';
   styleUrl: './juego-uno.component.css',
 })
 export class JuegoUnoComponent implements OnInit {
-  palabra: string[] = 'ARGENTINA'.toUpperCase().replace(/\s/g, '').split('');
+  listaPalabras: string[] = [
+    'ARGENTINA',
+    'COMPUTADORA',
+    'TELEVISION',
+    'DESTORNILLADOR',
+    'DINOSAURIO',
+    'EXTRATERRESTRE',
+    'SUPERMERCADO',
+  ];
+  palabra: string[]; /*= 'ARGENTINA'.toUpperCase().replace(/\s/g, '').split('');*/
   letras: string[] = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
   letrasSeleccionadas: string[] = [];
   contadorErrores: number = 0;
   estaDetenido: boolean = false;
   puntaje: number = 0;
 
-  constructor() {}
+  constructor() {
+    this.mezclarLista(this.listaPalabras);
+    this.palabra = this.listaPalabras[0]
+      .toUpperCase()
+      .replace(/\s/g, '')
+      .split('');
+  }
 
   ngOnInit(): void {}
 
@@ -46,11 +61,13 @@ export class JuegoUnoComponent implements OnInit {
   validarSiPerdio() {
     if (this.contadorErrores === 6) {
       this.estaDetenido = true;
-      Swalert.alertJuegoTerminado(`Tu puntaje fue: ${this.puntaje}`).then(
-        () => {
-          this.reiniciarJuego();
-        }
-      );
+      Swalert.alertJuegoTerminado(
+        `La palabra era '${this.palabra.join('')}', tu puntaje fue: ${
+          this.puntaje
+        }`
+      ).then(() => {
+        this.reiniciarJuego();
+      });
     } else {
       Swalert.alertJuegoPerdiste(':(');
     }
@@ -71,10 +88,22 @@ export class JuegoUnoComponent implements OnInit {
   reiniciarJuego() {
     this.letrasSeleccionadas = [];
     this.contadorErrores = 0;
+    this.mezclarLista(this.listaPalabras);
+    this.palabra = this.listaPalabras[0]
+      .toUpperCase()
+      .replace(/\s/g, '')
+      .split('');
     this.estaDetenido = false;
   }
 
   letraEstaDeshabilitada(letra: string): boolean {
     return this.letrasSeleccionadas.includes(letra);
+  }
+
+  private mezclarLista(lista: any[]): void {
+    for (let i = lista.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [lista[i], lista[j]] = [lista[j], lista[i]];
+    }
   }
 }

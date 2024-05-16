@@ -1,1 +1,20 @@
-<div class="juego-tres-container"><h1>Juego 3 Works!</h1></div>
+<div class="juego-tres-container">
+  <div *ngIf="preguntaActual">
+    <h1 class="tematica">
+      {{ contadorPregunta }}° {{ preguntaActual.pregunta }}
+    </h1>
+    <img class="imagen-api" [src]="preguntaActual.imagenUrl" />
+    <div class="opciones">
+      <div *ngFor="let opcion of preguntaActual.opciones; let i = index">
+        <button
+          class="btn"
+          (click)="seleccionarOpcion(i)"
+          [disabled]="opcionesSeleccionadas[i]"
+        >
+          {{ i + 1 }}. {{ opcion }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <h2 class="puntaje">Puntaje: {{ puntaje }}</h2>
+</div>

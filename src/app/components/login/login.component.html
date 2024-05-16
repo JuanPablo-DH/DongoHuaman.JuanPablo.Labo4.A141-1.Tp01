@@ -1,13 +1,12 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card p-4">
         <div class="card-body">
           <h5 class="card-title text-center mb-4">Iniciar Sesion</h5>
           <form>
-            <!-- Input email -->
+            <!--Input email-->
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
               <input
                 type="email"
                 class="form-control"
@@ -17,9 +16,8 @@
                 name="email"
               />
             </div>
-            <!-- Input contraseña -->
+            <!--Input contraseña-->
             <div class="mb-3">
-              <label for="clave" class="form-label">Contraseña</label>
               <input
                 type="password"
                 class="form-control"
@@ -29,7 +27,7 @@
                 name="clave"
               />
             </div>
-            <!-- Boton inciar sesion -->
+            <!--Boton inciar sesion-->
             <div class="text-center">
               <button
                 type="submit"
@@ -39,17 +37,16 @@
                 Iniciar Sesion
               </button>
             </div>
-            <!-- Label para cambiar de ruta -->
+            <!--Label para cambiar de ruta-->
             <div class="text-center mt-3">
               <a href="#" class="form-label" routerLink="/registrar"
                 >¿No tenes una cuenta? Registrate aqui.</a
               >
             </div>
-            <!-- Botones cargar usuarios -->
+            <!--Botones cargar usuarios-->
             <div class="text-center mt-3">
               <button
-                type="submit"
-                class="btn text-white bg-primary w-100"
+                class="btn text-white bg-dark w-100"
                 (click)="cargarUsuario(1)"
               >
                 Usuario 1
@@ -58,8 +55,7 @@
 
             <div class="text-center mt-3">
               <button
-                type="submit"
-                class="btn text-white bg-primary w-100"
+                class="btn text-white bg-dark w-100"
                 (click)="cargarUsuario(2)"
               >
                 Usuario 2
@@ -68,8 +64,7 @@
 
             <div class="text-center mt-3">
               <button
-                type="submit"
-                class="btn text-white bg-primary w-100"
+                class="btn text-white bg-dark w-100"
                 (click)="cargarUsuario(3)"
               >
                 Usuario 3

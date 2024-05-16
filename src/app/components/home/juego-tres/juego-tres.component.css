@@ -1,4 +1,9 @@
 .juego-tres-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   height: calc(100vh - 58px);
   background: linear-gradient(
     6deg,
@@ -7,6 +12,35 @@
   );
 }
 
-h1 {
-  color: #333;
+.tematica {
+  margin-top: 4px;
+}
+
+.imagen-api {
+  height: 350px;
+  width: 100%;
+  border-radius: 25px;
+  margin-top: 10px;
+  background-color: #202020;
+  border: solid 2px #ffffff;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: row; /* Cambiado de column a row */
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background-color: #202020;
+  color: white;
+  border: solid 2px #ffffff;
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+}
+
+.puntaje {
+  margin-top: 10px;
 }

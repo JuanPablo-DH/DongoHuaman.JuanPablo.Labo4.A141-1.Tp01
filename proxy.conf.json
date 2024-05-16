@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

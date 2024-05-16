@@ -8,6 +8,9 @@
   width: 80px;
   height: 80px;
   border-radius: 50px;
+  background-color: #202020;
+  color: white;
+  font-size: 18px;
   border: solid 2px #ffffff;
 }
 .chat-container {
@@ -16,6 +19,8 @@
   width: 350px;
   right: 50px;
   bottom: 50px;
+  background-color: #777;
+  border: solid 2px white;
 }
 
 .card-header {
@@ -23,20 +28,42 @@
   justify-content: center;
   align-items: center;
   height: 60px;
+  background-color: #202020;
+  border-bottom: solid 2px #a7a7a7;
 }
 .card-header button {
   position: absolute;
   right: 5px;
   width: 40px;
   height: 40px;
-  border-radius: 50px;
-  border: solid 2px #ffffff;
+  border-radius: 15px;
+  font-size: 15px;
+  background-color: #777;
+  color: white;
+  border: solid 2px white;
 }
 .card-footer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 70px;
+  background-color: #202020;
+  border-top: solid 2px #a7a7a7;
+}
+.card-footer input {
+  border: solid 2px white;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #a7a7a7;
+  color: #202020;
+  margin-right: 15px;
+}
+.card-footer button {
+  background-color: #777;
+  border: solid 2px white;
+  color: white;
 }
 
 .mensajes-container {
@@ -61,22 +88,29 @@
   float: right;
   /*max-width: 200px; El .texto establece el ancho maximo y minimo 
   min-width: 200px;*/
-  background-color: #dcf8c6;
+  background-color: #202020;
+  color: white;
   text-align: right;
 }
+.mensaje-enviado .mensaje-informacion {
+  font-size: 12px;
+  color: #a7a7a7;
+}
+
 .mensaje-recibido {
   display: block;
   float: left;
   /*max-width: 200px; El .texto establece el ancho maximo y minimo 
   min-width: 200px;*/
-  background-color: #e4e4e4;
+  background-color: #a7a7a7;
+  color: black;
   text-align: left;
 }
-
-.mensaje-informacion {
+.mensaje-recibido .mensaje-informacion {
   font-size: 12px;
-  color: #777;
+  color: #202020;
 }
+
 .mensaje-texto {
   min-width: 200px;
   max-width: 200px;
