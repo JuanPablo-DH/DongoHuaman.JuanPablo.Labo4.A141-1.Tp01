@@ -1,12 +1,97 @@
-<div class="info-usuario-container">
-  <h1>Informacion Usuario Works!</h1>
-  <ul>
-    <label>Lista Usuarios</label>
-    <li *ngFor="let data of listaUsuarios">
-      {{ data.nombre }}
-    </li>
-  </ul>
-  <h2>
-    Nombre del usuario '{{ emailUsuario }}'-> {{ usuarioObtenido.nombre }}
-  </h2>
+<div *ngIf="mostrarSpinner" class="info-usuario-container">
+  <span class="spinner"></span>
+</div>
+
+<div *ngIf="!mostrarSpinner" class="info-usuario-container">
+  <h2 class="label-bienvenido">Bienvenido, {{ usuarioObtenido.nombre }}</h2>
+
+  <div class="tablas-container">
+    <div class="tabla">
+      <label>Ahorcado Puntajes</label>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Posición</th>
+              <th>Usuario</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let puntaje of ahorcadoPuntajes; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ puntaje.usuario }}</td>
+              <td>{{ puntaje.puntaje }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tabla">
+      <label>Mayor o Menor Puntajes</label>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Posición</th>
+              <th>Usuario</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let puntaje of mayorOMenorPuntajes; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ puntaje.usuario }}</td>
+              <td>{{ puntaje.puntaje }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tabla">
+      <label>Preguntados Puntajes</label>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Posición</th>
+              <th>Usuario</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let puntaje of preguntadosPuntajes; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ puntaje.usuario }}</td>
+              <td>{{ puntaje.puntaje }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tabla">
+      <label>Predicción Puntajes</label>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Posición</th>
+              <th>Usuario</th>
+              <th>Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let puntaje of prediccionPuntajes; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ puntaje.usuario }}</td>
+              <td>{{ puntaje.puntaje }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,8 @@
 .juego-cuatro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: calc(100vh - 58px);
   background: linear-gradient(
     6deg,
@@ -7,6 +11,69 @@
   );
 }
 
-h1 {
-  color: #333;
+.interfaz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 1.5%;
+  gap: 50px;
+}
+.dado-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dado-container button {
+  margin-top: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #202020;
+  border: 2px solid #ffffff;
+  color: white;
+  font-size: 20px;
+}
+.dado {
+  border: 2px solid #202020;
+  border-radius: 25px;
+  background-color: white;
+  height: 80px;
+  width: 80px;
+}
+.seleccionado {
+  border: 2px solid #202020 !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+.control-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.control-container .label-puntaje {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  text-align: center;
+  height: 70px;
+  width: 125px;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}
+.control-container .boton-iniciar {
+  width: 240px;
+  height: 60px;
+  border-radius: 15px;
+  background-color: #202020;
+  border: 2px solid #ffffff;
+  color: white;
+  font-size: 20px;
 }

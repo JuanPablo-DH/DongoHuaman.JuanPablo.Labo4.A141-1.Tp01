@@ -23,7 +23,7 @@
   height: 350px;
   width: 950px;
   padding: 8px;
-  margin-top: -100px;
+  margin-top: 1%;
 }
 .cartas-container .card {
   justify-content: center;
@@ -55,6 +55,20 @@
   margin-top: 15px;
   height: 70px;
   width: 250px;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}
+
+.label-puntaje {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  text-align: center;
+  height: 70px;
+  width: 240px;
   color: #ffffff;
   border: solid 2px #ffffff;
   background-color: #202020;

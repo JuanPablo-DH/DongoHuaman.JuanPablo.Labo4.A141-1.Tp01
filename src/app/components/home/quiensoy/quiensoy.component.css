@@ -1,4 +1,4 @@
-.quien-soy-container {
+.pantalla {
   height: calc(100vh - 58px);
   background: linear-gradient(
     6deg,
@@ -7,28 +7,44 @@
   );
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .imagen-alumno {
-  margin-top: 150px;
-  width: 225px;
-  height: 225px;
+  margin-top: 50%;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 
-.nombre {
+.alumno {
   color: #333;
-  font-size: 80px;
+  font-size: 60px;
 }
 
-.curso,
+.curso {
+  color: #555;
+  font-size: 30px;
+}
+
+.propio {
+  margin-top: 40px;
+  color: #333;
+  font-size: 30px;
+}
+
 .juego {
   color: #555;
+  font-size: 35px;
 }
 
-.juego {
-  font-size: 70px;
-}
-
-.pendiente {
-  color: red;
-  font-size: 60px;
+.descripcion {
+  color: #333;
+  font-size: 30px;
+  max-width: 700px;
 }

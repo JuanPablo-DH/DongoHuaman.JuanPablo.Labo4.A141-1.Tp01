@@ -18,7 +18,7 @@
 .ahorcado-munieco {
   width: 400px;
   height: 250px;
-  margin-top: -30px;
+  margin-top: 1%;
   border: solid 2px #ffffff;
   background-color: #202020;
 }
@@ -55,4 +55,18 @@
   border: solid 2px #ffffff;
   background-color: #202020;
   color: #ffffff;
+}
+
+.label-puntaje {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  text-align: center;
+  height: 70px;
+  width: 125px;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
 }

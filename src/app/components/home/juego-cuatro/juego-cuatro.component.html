@@ -1,1 +1,97 @@
-<div class="juego-cuatro-container"><h1>Juego 4 Works!</h1></div>
+<div class="juego-cuatro-container">
+  <div class="interfaz-container">
+    <div class="dado-container">
+      <img class="dado" [src]="getPathDado(listaValorDados[0])" />
+      <button
+        class="btn"
+        *ngFor="let numero of numeros"
+        [disabled]="listaValoresSeleccionados[0] === numero || !estaDetenido"
+        [ngClass]="{ seleccionado: listaValoresSeleccionados[0] === numero }"
+        (click)="seleccionarValor(0, numero)"
+      >
+        {{ numero }}
+      </button>
+    </div>
+
+    <div class="dado-container">
+      <img class="dado" [src]="getPathDado(listaValorDados[1])" />
+      <button
+        class="btn"
+        *ngFor="let numero of numeros"
+        [disabled]="listaValoresSeleccionados[1] === numero || !estaDetenido"
+        [ngClass]="{ seleccionado: listaValoresSeleccionados[1] === numero }"
+        (click)="seleccionarValor(1, numero)"
+      >
+        {{ numero }}
+      </button>
+    </div>
+
+    <div class="dado-container">
+      <img class="dado" [src]="getPathDado(listaValorDados[2])" />
+      <button
+        class="btn"
+        *ngFor="let numero of numeros"
+        [disabled]="listaValoresSeleccionados[2] === numero || !estaDetenido"
+        [ngClass]="{ seleccionado: listaValoresSeleccionados[2] === numero }"
+        (click)="seleccionarValor(2, numero)"
+      >
+        {{ numero }}
+      </button>
+    </div>
+
+    <div class="dado-container">
+      <img class="dado" [src]="getPathDado(listaValorDados[3])" />
+      <button
+        class="btn"
+        *ngFor="let numero of numeros"
+        [disabled]="listaValoresSeleccionados[3] === numero || !estaDetenido"
+        [ngClass]="{ seleccionado: listaValoresSeleccionados[3] === numero }"
+        (click)="seleccionarValor(3, numero)"
+      >
+        {{ numero }}
+      </button>
+    </div>
+
+    <div class="dado-container">
+      <img class="dado" [src]="getPathDado(listaValorDados[4])" />
+      <button
+        class="btn"
+        *ngFor="let numero of numeros"
+        [disabled]="listaValoresSeleccionados[4] === numero || !estaDetenido"
+        [ngClass]="{ seleccionado: listaValoresSeleccionados[4] === numero }"
+        (click)="seleccionarValor(4, numero)"
+      >
+        {{ numero }}
+      </button>
+    </div>
+
+    <div class="dado-container">
+      <img class="dado" [src]="getPathDado(listaValorDados[5])" />
+      <button
+        class="btn"
+        *ngFor="let numero of numeros"
+        [disabled]="listaValoresSeleccionados[5] === numero || !estaDetenido"
+        [ngClass]="{ seleccionado: listaValoresSeleccionados[5] === numero }"
+        (click)="seleccionarValor(5, numero)"
+      >
+        {{ numero }}
+      </button>
+    </div>
+  </div>
+
+  <div class="control-container">
+    <!--<div *ngIf="true" class="label-puntaje">
+      <h2>Puntaje: {{ puntaje }}</h2>
+    </div>-->
+    <div class="card label-puntaje">
+      <label>Puntaje<br />{{ puntaje }}</label>
+    </div>
+    <button
+      class="btn boton-iniciar"
+      [disabled]="!estaDetenido"
+      (click)="iniciarJuego()"
+    >
+      Lanzar Dados
+    </button>
+  </div>
+</div>

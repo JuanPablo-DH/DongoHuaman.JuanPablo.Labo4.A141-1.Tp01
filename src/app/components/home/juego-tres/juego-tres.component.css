@@ -44,3 +44,17 @@
 .puntaje {
   margin-top: 10px;
 }
+
+.label-puntaje {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  text-align: center;
+  height: 70px;
+  width: 125px;
+  color: #ffffff;
+  border: solid 2px #ffffff;
+  background-color: #202020;
+}

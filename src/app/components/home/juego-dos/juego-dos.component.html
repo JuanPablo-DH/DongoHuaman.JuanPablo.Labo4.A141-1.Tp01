@@ -49,8 +49,10 @@
   </div>
 
   <!-- Informacion del puntaje y tiempo -->
-  <div class="card text-center informacion-container">
-    <p>Puntaje: {{ puntaje }}</p>
-    <p *ngIf="!estaDetenido">Tiempo restante: {{ tiempoRestante }} segundos</p>
+  <div class="card label-puntaje">
+    <label>Puntaje {{ puntaje }}</label>
+    <label *ngIf="!estaDetenido"
+      >Tiempo restante {{ tiempoRestante }} segundos</label
+    >
   </div>
 </div>

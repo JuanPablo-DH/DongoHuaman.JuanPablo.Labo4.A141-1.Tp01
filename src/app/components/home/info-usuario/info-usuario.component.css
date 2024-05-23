@@ -1,8 +1,85 @@
 .info-usuario-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: calc(100vh - 58px);
   background: linear-gradient(
     6deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(101, 101, 101, 1) 90%
   );
+}
+.label-bienvenido {
+  text-align: center;
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+
+.tablas-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tabla {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 40%;
+  background-color: #f9f9f9;
+}
+
+.tabla label {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.tabla-scroll {
+  max-height: 165px;
+  overflow-y: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f1f1f1;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #ececec;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid grey;
+  border-bottom-color: #202020;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotacion 1s linear infinite;
+}
+@keyframes rotacion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
