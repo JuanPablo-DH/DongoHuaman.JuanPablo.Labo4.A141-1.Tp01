@@ -51,6 +51,17 @@
   background-color: #202020;
 }
 
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  height: 300px;
+  width: 275px;
+}
+
 .informacion-container {
   margin-top: 15px;
   height: 70px;

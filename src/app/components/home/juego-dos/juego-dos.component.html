@@ -9,14 +9,20 @@
 
     <!-- Carta anterior -->
     <div class="card">
-      <h2 class="text-center">Carta Anterior</h2>
+      <h2 *ngIf="cartaAnterior === 0" class="text-center">Carta Anterior</h2>
+      <img *ngIf="cartaAnterior > 0" [src]="getPathCarta(cartaAnterior)" />
+      <!--
       <h2 class="text-center">{{ cartaAnterior }}</h2>
+      -->
     </div>
 
     <!-- Carta actual -->
     <div class="card">
-      <h2 class="text-center">Carta Actual</h2>
+      <h2 *ngIf="cartaActual === 0" class="text-center">Carta Actual</h2>
+      <img *ngIf="cartaActual > 0" [src]="getPathCarta(cartaActual)" />
+      <!--
       <h2 class="text-center">{{ cartaActual }}</h2>
+      -->
     </div>
   </div>
 
@@ -33,7 +39,7 @@
     <button
       type="button"
       class="btn btn-primary"
-      [disabled]="estaDetenido"
+      [disabled]="estaDetenido || seleccionoCarta"
       (click)="seleccionarMenor()"
     >
       Menor
@@ -41,7 +47,7 @@
     <button
       type="button"
       class="btn btn-primary"
-      [disabled]="estaDetenido"
+      [disabled]="estaDetenido || seleccionoCarta"
       (click)="seleccionarMayor()"
     >
       Mayor

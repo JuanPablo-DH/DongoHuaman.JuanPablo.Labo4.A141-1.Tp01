@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Swalert } from '../../../classes/swalert.class';
+import { Puntaje } from '../../../classes/puntaje.class';
+import { UsuarioService } from '../../../services/usuario.service';
+import { PuntajeService } from '../../../services/puntaje.service';
 
 @Component({
   selector: 'app-juego-dos',
@@ -13,7 +16,7 @@ import { Swalert } from '../../../classes/swalert.class';
 })
 export class JuegoDosComponent implements OnInit {
   /* Juego */
-  public duracion = 10;
+  public duracion = 30;
   public baraja: number[] = [];
   public cartaActual: number = 0;
   public cartaAnterior: number = 0;
@@ -21,11 +24,16 @@ export class JuegoDosComponent implements OnInit {
   public tiempoRestante: number = this.duracion;
   public puntaje: number = 0;
   public estaDetenido: boolean = true;
+  public seleccionoCarta: boolean = false;
 
   /* Arregla error del temporizador al cambiar de ruta */
   private subscription: Subscription;
 
-  constructor(private router: Router) {
+  constructor(
+    private usuarioService: UsuarioService,
+    private puntajeService: PuntajeService,
+    private router: Router
+  ) {
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.detenerTemporizador();
@@ -79,46 +87,83 @@ export class JuegoDosComponent implements OnInit {
     this.estaDetenido = true;
     this.cartaActual = 0;
     this.cartaAnterior = 0;
-    Swalert.alertJuegoTerminado(`Tu puntaje fue ${this.puntaje}`).then(() => {
-      this.puntaje = 0;
-    });
+    Swalert.alertJuegoTerminado(`Tu puntaje fue ${this.puntaje}`).then(
+      async () => {
+        if (this.puntaje != 0) {
+          await this.insertarPuntaje();
+        }
+        this.puntaje = 0;
+      }
+    );
   }
 
-  seleccionarMenor(): void {
+  seleccionarMenor() {
     if (!this.estaDetenido) {
-      if (this.baraja.length === 0) {
-        this.finalizarJuego();
-        return;
-      }
-
+      this.seleccionoCarta = true;
       this.cartaAnterior = this.cartaActual;
       this.cartaActual = this.baraja.pop() as number;
 
       if (this.cartaActual < this.cartaAnterior) {
         this.puntaje++;
         Swalert.alertJuegoGanaste(':D');
+        setTimeout(() => {
+          if (this.baraja.length === 0) {
+            this.finalizarJuego();
+          }
+          this.seleccionoCarta = false;
+        }, 1500);
       } else {
         Swalert.alertJuegoPerdiste(':(');
+        setTimeout(() => {
+          if (this.baraja.length === 0) {
+            this.finalizarJuego();
+          }
+          this.seleccionoCarta = false;
+        }, 1500);
       }
     }
   }
 
-  seleccionarMayor(): void {
+  seleccionarMayor() {
     if (!this.estaDetenido) {
-      if (this.baraja.length === 0) {
-        this.finalizarJuego();
-        return;
-      }
-
+      this.seleccionoCarta = true;
       this.cartaAnterior = this.cartaActual;
       this.cartaActual = this.baraja.pop() as number;
 
       if (this.cartaActual > this.cartaAnterior) {
         this.puntaje++;
         Swalert.alertJuegoGanaste(':D');
+        setTimeout(() => {
+          if (this.baraja.length === 0) {
+            this.finalizarJuego();
+          }
+          this.seleccionoCarta = false;
+        }, 1500);
       } else {
         Swalert.alertJuegoPerdiste(':(');
+        setTimeout(() => {
+          if (this.baraja.length === 0) {
+            this.finalizarJuego();
+          }
+          this.seleccionoCarta = false;
+        }, 1500);
       }
     }
+  }
+
+  getPathCarta(numero: number) {
+    return `assets/juego-dos/cartas/carta-${numero}.png`;
+  }
+
+  private async insertarPuntaje() {
+    console.log('entre a insertarPuntaje() con', this.puntaje);
+    let puntaje = new Puntaje();
+    puntaje.usuarioId = this.usuarioService.getEmail();
+    puntaje.score = this.puntaje;
+    const response = await this.puntajeService.insertar(
+      puntaje,
+      PuntajeService.MAYORMENOR
+    );
+    Swalert.alertSeCargoTuPuntaje(response);
   }
 }

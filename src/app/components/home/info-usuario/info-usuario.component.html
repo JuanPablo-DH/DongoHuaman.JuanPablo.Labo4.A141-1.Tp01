@@ -20,8 +20,8 @@
           <tbody>
             <tr *ngFor="let puntaje of ahorcadoPuntajes; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ puntaje.usuario }}</td>
-              <td>{{ puntaje.puntaje }}</td>
+              <td>{{ puntaje.usuarioNombre }}</td>
+              <td>{{ puntaje.score }}</td>
             </tr>
           </tbody>
         </table>
@@ -42,8 +42,8 @@
           <tbody>
             <tr *ngFor="let puntaje of mayorOMenorPuntajes; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ puntaje.usuario }}</td>
-              <td>{{ puntaje.puntaje }}</td>
+              <td>{{ puntaje.usuarioNombre }}</td>
+              <td>{{ puntaje.score }}</td>
             </tr>
           </tbody>
         </table>
@@ -64,8 +64,8 @@
           <tbody>
             <tr *ngFor="let puntaje of preguntadosPuntajes; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ puntaje.usuario }}</td>
-              <td>{{ puntaje.puntaje }}</td>
+              <td>{{ puntaje.usuarioNombre }}</td>
+              <td>{{ puntaje.score }}</td>
             </tr>
           </tbody>
         </table>
@@ -86,8 +86,8 @@
           <tbody>
             <tr *ngFor="let puntaje of prediccionPuntajes; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ puntaje.usuario }}</td>
-              <td>{{ puntaje.puntaje }}</td>
+              <td>{{ puntaje.usuarioNombre }}</td>
+              <td>{{ puntaje.score }}</td>
             </tr>
           </tbody>
         </table>

@@ -46,7 +46,7 @@
     <ng-container *ngFor="let rowIndex of [0, 1, 2, 3]">
       <div class="row">
         <button
-          *ngFor="let letra of letras.slice(rowIndex * 6, (rowIndex + 1) * 6)"
+          *ngFor="let letra of getLetrasByRow(rowIndex)"
           class="btn col"
           (click)="elegirLetra(letra)"
           [disabled]="letraEstaDeshabilitada(letra) || estaDetenido"

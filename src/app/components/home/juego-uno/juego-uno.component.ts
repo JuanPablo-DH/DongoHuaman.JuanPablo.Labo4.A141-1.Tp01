@@ -2,6 +2,9 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Swalert } from '../../../classes/swalert.class';
+import { PuntajeService } from '../../../services/puntaje.service';
+import { Puntaje } from '../../../classes/puntaje.class';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-juego-uno',
@@ -27,7 +30,10 @@ export class JuegoUnoComponent implements OnInit {
   estaDetenido: boolean = false;
   puntaje: number = 0;
 
-  constructor() {
+  constructor(
+    private usuarioService: UsuarioService,
+    private puntajeService: PuntajeService
+  ) {
     this.mezclarLista(this.listaPalabras);
     this.palabra = this.listaPalabras[0]
       .toUpperCase()
@@ -36,6 +42,13 @@ export class JuegoUnoComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  getLetrasByRow(rowIndex: number): string[] {
+    if (rowIndex === 3) {
+      return this.letras.slice(21, 27); // La última fila tiene 6 letras
+    }
+    return this.letras.slice(rowIndex * 7, (rowIndex + 1) * 7);
+  }
 
   validarSiGano() {
     const letrasSeleccionadasEstanPresentes = this.palabra.every((letra) =>
@@ -49,7 +62,8 @@ export class JuegoUnoComponent implements OnInit {
         this.puntaje = 2;
       }
       Swalert.alertJuegoTerminado(`Tu puntaje fue: ${this.puntaje}`).then(
-        () => {
+        async () => {
+          await this.insertarPuntaje();
           this.reiniciarJuego();
         }
       );
@@ -86,6 +100,7 @@ export class JuegoUnoComponent implements OnInit {
   }
 
   reiniciarJuego() {
+    this.puntaje = 0;
     this.letrasSeleccionadas = [];
     this.contadorErrores = 0;
     this.mezclarLista(this.listaPalabras);
@@ -105,5 +120,16 @@ export class JuegoUnoComponent implements OnInit {
       const j = Math.floor(Math.random() * (i + 1));
       [lista[i], lista[j]] = [lista[j], lista[i]];
     }
+  }
+
+  private async insertarPuntaje() {
+    let puntaje = new Puntaje();
+    puntaje.usuarioId = this.usuarioService.getEmail();
+    puntaje.score = this.puntaje;
+    const response = await this.puntajeService.insertar(
+      puntaje,
+      PuntajeService.AHORCADO
+    );
+    Swalert.alertSeCargoTuPuntaje(response);
   }
 }

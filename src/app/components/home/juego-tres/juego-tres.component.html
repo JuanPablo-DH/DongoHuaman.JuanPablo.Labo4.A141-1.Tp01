@@ -1,5 +1,8 @@
 <div class="juego-tres-container">
-  <div *ngIf="preguntaActual">
+  <div *ngIf="mostrarSpinner" class="juego-tres-container">
+    <span class="spinner"></span>
+  </div>
+  <div *ngIf="preguntaActual && !mostrarSpinner">
     <h1 class="tematica">
       {{ contadorPregunta }}° {{ preguntaActual.pregunta }}
     </h1>

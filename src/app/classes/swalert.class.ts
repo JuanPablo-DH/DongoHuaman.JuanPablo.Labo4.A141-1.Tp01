@@ -113,4 +113,28 @@ export class Swalert {
       },
     });
   }
+
+  static async alertSeCargoTuPuntaje(mensaje: string) {
+    return Swal.fire({
+      //heightAuto: false,
+      toast: true,
+      color: 'white',
+      position: 'bottom-left',
+      icon: 'warning',
+      iconColor: 'white',
+      title: 'PUNTAJE',
+      text: mensaje,
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+      background: 'orange', // Celeste
+      didOpen: (t) => {
+        t.addEventListener('click', () => {
+          Swal.close();
+        });
+        //t.addEventListener('mouseenter', Swal.stopTimer);
+        //t.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+  }
 }

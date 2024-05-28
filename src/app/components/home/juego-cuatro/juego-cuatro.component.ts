@@ -1,6 +1,9 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Swalert } from '../../../classes/swalert.class';
+import { Puntaje } from '../../../classes/puntaje.class';
+import { UsuarioService } from '../../../services/usuario.service';
+import { PuntajeService } from '../../../services/puntaje.service';
 
 @Component({
   selector: 'app-juego-cuatro',
@@ -15,6 +18,11 @@ export class JuegoCuatroComponent implements OnInit {
   numeros: number[] = [1, 2, 3, 4, 5, 6];
   puntaje: number = 0;
   estaDetenido: boolean = true;
+
+  constructor(
+    private usuarioService: UsuarioService,
+    private puntajeService: PuntajeService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -32,10 +40,15 @@ export class JuegoCuatroComponent implements OnInit {
 
     setTimeout(() => {
       this.calcularPuntaje();
-      Swalert.alertJuegoTerminado(`Tu puntaje fue ${this.puntaje}`).then(() => {
-        this.estaDetenido = true;
-        //this.limpiar();
-      });
+      Swalert.alertJuegoTerminado(`Tu puntaje fue ${this.puntaje}`).then(
+        async () => {
+          if (this.puntaje != 0) {
+            await this.insertarPuntaje();
+          }
+          this.estaDetenido = true;
+          //this.limpiar();
+        }
+      );
     }, 6000);
   }
 
@@ -59,24 +72,21 @@ export class JuegoCuatroComponent implements OnInit {
   }
 
   getPathDado(valor: number) {
-    const directorio = 'assets/juego-cuatro/dados/';
-    switch (valor) {
-      case 1:
-        return directorio + 'dado-1.png';
-      case 2:
-        return directorio + 'dado-2.png';
-      case 3:
-        return directorio + 'dado-3.png';
-      case 4:
-        return directorio + 'dado-4.png';
-      case 5:
-        return directorio + 'dado-5.png';
-      default:
-        return directorio + 'dado-6.png';
-    }
+    return `assets/juego-cuatro/dados/dado-${valor}.png`;
   }
 
   limpiar() {
     this.listaValoresSeleccionados = [0, 0, 0, 0, 0, 0];
+  }
+
+  private async insertarPuntaje() {
+    let puntaje = new Puntaje();
+    puntaje.usuarioId = this.usuarioService.getEmail();
+    puntaje.score = this.puntaje;
+    const response = await this.puntajeService.insertar(
+      puntaje,
+      PuntajeService.PREDICCION
+    );
+    Swalert.alertSeCargoTuPuntaje(response);
   }
 }
